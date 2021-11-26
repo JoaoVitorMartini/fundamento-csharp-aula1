@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace dotnetcore
 {
@@ -29,8 +30,43 @@ namespace dotnetcore
         {
             Console.WriteLine("Iniciando Programa");
 
-            var xNotasZuqui = new int[] { 7, 6, 5, 3 };
-            var xNotasBronza = new int[] { 8, 9, 10, 8 };
+            var xNotasZuqui = new List<int> { 7, 6, 5, 3 };
+            var xNotasBronza = new List<int> { 8, 9, 10, 8 };
+
+            var MediaZuqui = CalcularMedia(xNotasZuqui);
+            var MediaBronza = CalcularMedia(xNotasBronza);
+
+            Console.WriteLine("A média do Zuqui foi:");
+            Console.WriteLine("Nota: " + MediaZuqui);
+
+            if (MediaZuqui < 7)
+            {
+                Console.WriteLine("Reprovado");
+            }
+            else {
+                Console.WriteLine("Aprovado");
+            }
+
+            Console.WriteLine("A média do Bronza foi:");
+            Console.WriteLine("Nota: " + MediaBronza);
+
+            if (MediaBronza < 7)
+            {
+                Console.WriteLine("Reprovado");
+            }
+            else {
+                Console.WriteLine("Aprovado");
+            }
+        }
+        
+        public static float CalcularMedia(List<int> xItens)
+        {
+            var Soma = 0;
+            foreach (var item in xItens)
+            {
+                Soma += item;
+            }
+            return Soma/xItens.Count;
         }
     }
 }
